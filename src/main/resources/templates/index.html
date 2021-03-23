@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+    <form action="/user/save" method="POST">
+
+    <input type="hidden" id="id" name="id" th:value="${userupdate?.id}">
+
+    Username : <input type="text" id="username" name="username" th:value="${userupdate?.username}"> <br><br>
+    Password : <input type="text" id="password" name="password" th:value="${userupdate?.password}"> <br><br>
+    <button type="submit">SAVE</button>
+    
+    </form> <br><br>
+
+
+    
+            <table border = "1" >
+                <tr >
+                    <td>ID</td>
+                    <td>UserName</td>
+                    <td>Password</td>
+                </tr>
+                 <tr th:each="item:${user}" >
+                    <td>
+                        <p th:text="${item.id}"></p>
+                    </td>
+                    <td>
+                        <p th:text="${item.username}"></p>
+                    </td>
+                    <td>
+                        <p th:text="${item.password}"></p>
+                    </td>
+                    <td>
+                        <a th:href="'/user/update?id='+${item.id}">Edit</a>
+                        <a th:href="'/user/delete?id='+${item.id}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+
+
+</body>
+</html>
